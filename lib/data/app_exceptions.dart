@@ -32,3 +32,11 @@ class UnauthorisedException extends AppExceptions {
           'Unauthorised Request',
         );
 }
+
+class InvalidInputException extends AppExceptions {
+  InvalidInputException([String? message])
+      : super(
+          message,
+          'Invalid Input',
+        );
+}
