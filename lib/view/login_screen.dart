@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mvvm_with_provider/utils/utils.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -12,9 +13,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: [
-          Text('login screen'),
-        ],
+        children: [],
       ),
     );
   }

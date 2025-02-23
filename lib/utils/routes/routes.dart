@@ -15,13 +15,15 @@ class Routes {
             builder: (BuildContext context) => LoginScreen());
 
       default:
-        return MaterialPageRoute(builder: (_) {
-          return Scaffold(
-            body: Center(
-              child: Text('No route defined'),
-            ),
-          );
-        });
+        return MaterialPageRoute(
+          builder: (_) {
+            return Scaffold(
+              body: Center(
+                child: Text('No route defined'),
+              ),
+            );
+          },
+        );
     }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm_with_provider/utils/routes/routes_name.dart';
+import 'package:mvvm_with_provider/utils/utils.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,7 +17,8 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           TextButton(
             onPressed: () {
-              Navigator.pushNamed(context, RoutesName.login);
+              // Utils.toastMessage('hello world');
+              Utils.flushbarErrorMessages('message', context);
             },
             child: Text('go to login'),
           ),
