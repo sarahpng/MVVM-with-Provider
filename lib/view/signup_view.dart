@@ -5,14 +5,14 @@ import 'package:mvvm_with_provider/utils/utils.dart';
 import 'package:mvvm_with_provider/view_model/auth_view_model.dart';
 import 'package:provider/provider.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class SignupView extends StatefulWidget {
+  const SignupView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<SignupView> createState() => _SignupViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _SignupViewState extends State<SignupView> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
@@ -43,7 +43,7 @@ class _LoginViewState extends State<LoginView> {
         backgroundColor: Colors.blue,
         centerTitle: true,
         title: Text(
-          'Login',
+          'Sign up',
           style: TextStyle(color: Colors.white),
         ),
       ),
@@ -99,8 +99,8 @@ class _LoginViewState extends State<LoginView> {
                 height: height * .085,
               ),
               RoundButton(
-                title: 'Login',
-                loading: authViewModel.loading,
+                title: 'Sign up',
+                loading: authViewModel.signUpLoading,
                 onPress: () {
                   if (_emailController.text.isEmpty) {
                     Utils.flushbarErrorMessages(
@@ -123,7 +123,7 @@ class _LoginViewState extends State<LoginView> {
                       'email': _emailController.text.toString(),
                       'password': _passwordController.text.toString(),
                     };
-                    authViewModel.loginApi(data, context);
+                    authViewModel.signUpApi(data, context);
                   }
                 },
               ),
@@ -131,9 +131,9 @@ class _LoginViewState extends State<LoginView> {
               InkWell(
                   onTap: () {
                     Navigator.pushNamedAndRemoveUntil(
-                        context, RoutesName.signup, (route) => false);
+                        context, RoutesName.login, (route) => false);
                   },
-                  child: Text('Dont have an account? Sign up')),
+                  child: Text('Already have an account? Login')),
             ],
           ),
         ),
