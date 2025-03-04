@@ -17,18 +17,34 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     final userPreference = Provider.of<UserViewModel>(context);
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        automaticallyImplyLeading: false,
+        actions: [
+          InkWell(
+            onTap: () {
+              userPreference.remove().then((value) {
+                Navigator.pushNamedAndRemoveUntil(
+                    context, RoutesName.login, (route) => false);
+              });
+            },
+            child: Center(
+              child: Text(
+                'Logout',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 20,
+          ),
+        ],
+      ),
       body: SafeArea(
         child: Column(
-          children: [
-            InkWell(
-                onTap: () {
-                  userPreference.remove().then((value) {
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, RoutesName.login, (route) => false);
-                  });
-                },
-                child: Text('Home Screen')),
-          ],
+          children: [],
         ),
       ),
     );

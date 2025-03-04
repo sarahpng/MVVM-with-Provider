@@ -3,6 +3,7 @@ import 'package:mvvm_with_provider/res/components/round_button.dart';
 import 'package:mvvm_with_provider/utils/routes/routes_name.dart';
 import 'package:mvvm_with_provider/utils/utils.dart';
 import 'package:mvvm_with_provider/view_model/auth_view_model.dart';
+import 'package:mvvm_with_provider/view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
 
 class LoginView extends StatefulWidget {
@@ -36,6 +37,7 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     final authViewModel = Provider.of<AuthViewModel>(context);
+    final userPrefernce = Provider.of<UserViewModel>(context);
     final height = MediaQuery.of(context).size.height * 1;
     // final width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -119,9 +121,13 @@ class _LoginViewState extends State<LoginView> {
                     );
                   } else {
                     // print('api hit');
+                    // Map data = {
+                    //   'email': _emailController.text.toString(),
+                    //   'password': _passwordController.text.toString(),
+                    // };
                     Map data = {
-                      'email': _emailController.text.toString(),
-                      'password': _passwordController.text.toString(),
+                      'email': 'eve.holt@reqres.in',
+                      'password': 'cityslicka',
                     };
                     authViewModel.loginApi(data, context);
                   }
