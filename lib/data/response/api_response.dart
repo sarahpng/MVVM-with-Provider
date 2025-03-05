@@ -1,15 +1,15 @@
 import 'package:mvvm_with_provider/data/response/status.dart';
 
 class ApiResponse<T> {
-  Status? status;
+  Status status;
   T? data;
   String? message;
 
   ApiResponse(this.status, this.data, this.message);
 
   ApiResponse.loading() : status = Status.LOADING;
-  ApiResponse.completed() : status = Status.COMPLETED;
-  ApiResponse.error() : status = Status.ERROR;
+  ApiResponse.completed(this.data) : status = Status.COMPLETED;
+  ApiResponse.error(this.message) : status = Status.ERROR;
 
   @override
   String toString() {

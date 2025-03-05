@@ -6,7 +6,7 @@ import 'package:mvvm_with_provider/res/app_url.dart';
 class HomeRepository {
   final BaseApiServices _apiServices = NetworkApiService();
 
-  Future<MoviesModel> loginApi() async {
+  Future<MoviesModel> fetchMoviesList() async {
     try {
       dynamic response = await _apiServices.getResponse(
         AppUrl.moviesListEndPoint,
