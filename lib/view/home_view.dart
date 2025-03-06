@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mvvm_with_provider/data/response/status.dart';
 import 'package:mvvm_with_provider/model/movies_model.dart';
 import 'package:mvvm_with_provider/utils/routes/routes_name.dart';
+import 'package:mvvm_with_provider/utils/utils.dart';
 import 'package:mvvm_with_provider/view_model/home_view_model.dart';
 import 'package:mvvm_with_provider/view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
@@ -60,11 +61,14 @@ class _HomeViewState extends State<HomeView> {
         child: Consumer<HomeViewModel>(builder: (context, provider, child) {
           switch (provider.moviesList.status) {
             case Status.LOADING:
-              return CircularProgressIndicator(
-                color: Colors.grey,
+              return Center(
+                child: CircularProgressIndicator(
+                  color: Colors.grey,
+                ),
               );
             case Status.ERROR:
-              return Text(provider.moviesList.message.toString());
+              return Center(
+                  child: Text(provider.moviesList.message.toString()));
             case Status.COMPLETED:
               return ListView.builder(
                   itemCount: provider.moviesList.data!.movies!.length,
@@ -72,6 +76,9 @@ class _HomeViewState extends State<HomeView> {
                     return Card(
                       child: ListTile(
                         leading: Image.network(
+                          height: 40,
+                          width: 40,
+                          fit: BoxFit.cover,
                           provider.moviesList.data!.movies![index].posterurl
                               .toString(),
                           errorBuilder: (context, error, stack) {
@@ -89,7 +96,11 @@ class _HomeViewState extends State<HomeView> {
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text(''),
+                            Text(
+                              Utils.averageRating(provider
+                                      .moviesList.data!.movies![index].ratings!)
+                                  .toStringAsFixed(1),
+                            ),
                             Icon(Icons.star, color: Colors.yellow),
                           ],
                         ),
